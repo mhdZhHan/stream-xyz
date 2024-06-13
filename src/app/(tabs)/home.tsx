@@ -19,25 +19,15 @@ import { images } from "@/src/constants"
 import { getAllPosts } from "@/src/lib/appwrite"
 import { useAppwrite } from "@/src/lib/useAppwrite"
 
-import { UserType } from "@/src/context/GlobalProvider"
-
-type ItemsType = {
-	title?: string
-	thumbnail?: string
-	prompt?: string
-	video?: string
-	users?: UserType
-	[key: string]: any
-}
-
-// const data: ItemsType[] = []
+// types
+import { VideoType } from "@/src/types"
 
 const Home = () => {
 	const {
 		data: posts,
 		refetch,
 		isLoading,
-	} = useAppwrite<ItemsType>(getAllPosts)
+	} = useAppwrite<VideoType>(getAllPosts)
 
 	const [refreshing, setRefreshing] = useState(false)
 
@@ -52,7 +42,7 @@ const Home = () => {
 			<FlatList
 				data={posts}
 				keyExtractor={(item) => item.$id.toString()}
-				renderItem={({ item }) => <VideoCard video={posts} />}
+				renderItem={({ item }) => <VideoCard video={item} />}
 				refreshControl={
 					<RefreshControl
 						refreshing={refreshing}

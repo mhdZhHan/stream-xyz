@@ -1,23 +1,18 @@
 import { View, Text } from "react-native"
 
-type VideoType = {
-	title: string
-	thumbnail: string
-	video: string
-	avatar: string
-	username: string
-}
+// types
+import { VideoType } from "../types"
 
 type VideoCardProps = {
 	video: VideoType
 }
 
 const VideoCard = ({
-	video: { title, thumbnail, video, avatar, username },
+	video: { title, thumbnail, users, prompt, video },
 }: VideoCardProps) => {
 	return (
 		<View>
-			<Text>VideoCard</Text>
+			<Text className="text-white">{title}</Text>
 		</View>
 	)
 }

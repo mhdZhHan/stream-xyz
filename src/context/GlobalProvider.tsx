@@ -1,15 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { getCurrentUser } from "../lib/appwrite"
 
+// types
+import { UserType } from "../types"
+
 type GlobalProviderProps = {
 	children: React.ReactNode
-}
-
-export type UserType = {
-	username?: string
-	email?: string
-	avatar?: string
-	[key: string]: any
 }
 
 type GlobalContextType = {
