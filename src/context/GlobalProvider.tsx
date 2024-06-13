@@ -5,7 +5,7 @@ type GlobalProviderProps = {
 	children: React.ReactNode
 }
 
-type UserType = {
+export type UserType = {
 	username?: string
 	email?: string
 	avatar?: string

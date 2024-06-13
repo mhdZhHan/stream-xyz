@@ -1,19 +1,57 @@
-import { useState } from "react"
-import { View, Text, FlatList, Image, RefreshControl } from "react-native"
+import { useEffect, useState } from "react"
+import {
+	View,
+	Text,
+	FlatList,
+	Image,
+	RefreshControl,
+	Alert,
+} from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { images } from "@/src/constants"
+// components
 import SearchInput from "@/src/components/SearchInput"
 import Trending from "@/src/components/Trending"
 import EmptyState from "@/src/components/EmptyState"
 
+import { images } from "@/src/constants"
+import { getAllPosts } from "@/src/lib/appwrite"
+
+import { UserType } from "@/src/context/GlobalProvider"
+
 type ItemsType = {
-	id: number
+	title?: string
+	thumbnail?: string
+	prompt?: string
+	video?: string
+	users?: UserType
+	[key: string]: any
 }
 
-const data: ItemsType[] = []
+// const data: ItemsType[] = []
 
 const Home = () => {
+	const [data, setData] = useState<ItemsType[]>([])
+	const [isLoading, setIsLoading] = useState(false)
+
+	useEffect(() => {
+		const fetchData = async () => {
+			setIsLoading(true)
+			try {
+				const response = await getAllPosts()
+				setData(response)
+			} catch (error) {
+				Alert.alert("Error", (error as Error).message)
+			} finally {
+				setIsLoading(false)
+			}
+		}
+
+		fetchData()
+	}, [])
+
+	console.log(data)
+
 	const [refreshing, setRefreshing] = useState(false)
 
 	const onRefresh = async () => {
@@ -25,7 +63,7 @@ const Home = () => {
 		<SafeAreaView className="bg-primary h-full">
 			<FlatList
 				data={data}
-				keyExtractor={(item) => item.id.toString()}
+				keyExtractor={(item) => item.$id.toString()}
 				renderItem={({ item }) => <Text>{item.id}</Text>}
 				refreshControl={
 					<RefreshControl

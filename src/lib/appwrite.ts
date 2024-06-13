@@ -19,6 +19,16 @@ export const config: ConfigType = {
 	bucketId: "6669937b0038e5f791dd",
 }
 
+const {
+	endpoint,
+	platform,
+	projectId,
+	databaseId,
+	userCollectionId,
+	videoCollectionId,
+	bucketId,
+} = config
+
 const client = new Client()
 
 client
@@ -95,5 +105,20 @@ export const getCurrentUser = async () => {
 		if (!currentUser) throw Error
 
 		return currentUser.documents[0]
-	} catch (error) {}
+	} catch (error) {
+		throw new Error(error as string)
+	}
+}
+
+export const getAllPosts = async () => {
+	try {
+		const posts = await databases.listDocuments(
+			databaseId,
+			videoCollectionId
+		)
+
+		return posts.documents
+	} catch (error) {
+		throw new Error(error as string)
+	}
 }
