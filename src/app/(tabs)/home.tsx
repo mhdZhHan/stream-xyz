@@ -13,9 +13,11 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import SearchInput from "@/src/components/SearchInput"
 import Trending from "@/src/components/Trending"
 import EmptyState from "@/src/components/EmptyState"
+import VideoCard from "@/src/components/VideoCard"
 
 import { images } from "@/src/constants"
 import { getAllPosts } from "@/src/lib/appwrite"
+import { useAppwrite } from "@/src/lib/useAppwrite"
 
 import { UserType } from "@/src/context/GlobalProvider"
 
@@ -31,40 +33,26 @@ type ItemsType = {
 // const data: ItemsType[] = []
 
 const Home = () => {
-	const [data, setData] = useState<ItemsType[]>([])
-	const [isLoading, setIsLoading] = useState(false)
-
-	useEffect(() => {
-		const fetchData = async () => {
-			setIsLoading(true)
-			try {
-				const response = await getAllPosts()
-				setData(response)
-			} catch (error) {
-				Alert.alert("Error", (error as Error).message)
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		fetchData()
-	}, [])
-
-	console.log(data)
+	const {
+		data: posts,
+		refetch,
+		isLoading,
+	} = useAppwrite<ItemsType>(getAllPosts)
 
 	const [refreshing, setRefreshing] = useState(false)
 
 	const onRefresh = async () => {
 		setRefreshing(true)
+		await refetch()
 		setRefreshing(false)
 	}
 
 	return (
 		<SafeAreaView className="bg-primary h-full">
 			<FlatList
-				data={data}
+				data={posts}
 				keyExtractor={(item) => item.$id.toString()}
-				renderItem={({ item }) => <Text>{item.id}</Text>}
+				renderItem={({ item }) => <VideoCard video={posts} />}
 				refreshControl={
 					<RefreshControl
 						refreshing={refreshing}
