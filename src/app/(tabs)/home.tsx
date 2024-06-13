@@ -1,12 +1,5 @@
-import { useEffect, useState } from "react"
-import {
-	View,
-	Text,
-	FlatList,
-	Image,
-	RefreshControl,
-	Alert,
-} from "react-native"
+import { useState } from "react"
+import { View, Text, FlatList, Image, RefreshControl } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 // components
@@ -15,7 +8,10 @@ import Trending from "@/src/components/Trending"
 import EmptyState from "@/src/components/EmptyState"
 import VideoCard from "@/src/components/VideoCard"
 
+// constants
 import { images } from "@/src/constants"
+
+// lib
 import { getAllPosts } from "@/src/lib/appwrite"
 import { useAppwrite } from "@/src/lib/useAppwrite"
 
