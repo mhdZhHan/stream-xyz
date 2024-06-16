@@ -12,7 +12,7 @@ import VideoCard from "@/src/components/VideoCard"
 import { images } from "@/src/constants"
 
 // lib
-import { getAllPosts } from "@/src/lib/appwrite"
+import { getAllPosts, getLatestPosts } from "@/src/lib/appwrite"
 import { useAppwrite } from "@/src/lib/useAppwrite"
 
 // types
@@ -24,6 +24,8 @@ const Home = () => {
 		refetch,
 		isLoading,
 	} = useAppwrite<VideoType>(getAllPosts)
+
+	const { data: latestPosts } = useAppwrite<VideoType>(getLatestPosts)
 
 	const [refreshing, setRefreshing] = useState(false)
 
@@ -79,7 +81,7 @@ const Home = () => {
 								Latest Videos
 							</Text>
 
-							<Trending posts={[{ id: 1 }]} />
+							<Trending videos={latestPosts} />
 						</View>
 					</View>
 				}
