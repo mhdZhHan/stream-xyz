@@ -82,8 +82,6 @@ export const signIn = async (email: string, password: string) => {
 			password
 		)
 
-		console.log("Hello", session)
-
 		return session
 	} catch (error) {
 		console.log(error)
