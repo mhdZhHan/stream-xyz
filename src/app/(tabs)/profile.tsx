@@ -6,7 +6,7 @@ import EmptyState from "@/src/components/EmptyState"
 import VideoCard from "@/src/components/VideoCard"
 
 // lib
-import { getUserPosts } from "@/src/lib/appwrite"
+import { getUserPosts, logOut } from "@/src/lib/appwrite"
 import { useAppwrite } from "@/src/lib/useAppwrite"
 
 // contexts
@@ -18,14 +18,21 @@ import { VideoType } from "@/src/types"
 // assets
 import { icons } from "@/src/constants"
 import InfoBox from "@/src/components/InfoBox"
+import { router } from "expo-router"
 
 const Profile = () => {
-	const { user, setUser, setIsLoading } = useGlobalContext()
+	const { user, setUser, setIsLoggedIn } = useGlobalContext()
 	const { data: posts, refetch } = useAppwrite<VideoType>(() =>
 		getUserPosts(user?.$id as string)
 	)
 
-	const logout = () => {}
+	const logout = async () => {
+		await logOut()
+		setUser(null)
+		setIsLoggedIn(false)
+
+		router.replace("/login")
+	}
 
 	return (
 		<SafeAreaView className="bg-primary h-full">

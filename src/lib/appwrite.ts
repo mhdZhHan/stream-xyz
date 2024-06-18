@@ -162,3 +162,11 @@ export const getUserPosts = async (userId: string) => {
 		throw new Error(error as string)
 	}
 }
+
+export const logOut = async () => {
+	try {
+		const session = await account.deleteSession("current")
+	} catch (error) {
+		throw new Error(error as string)
+	}
+}
