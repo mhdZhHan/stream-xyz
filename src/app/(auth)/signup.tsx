@@ -3,10 +3,18 @@ import { View, Text, ScrollView, Image, Alert } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Link, router } from "expo-router"
 
+// constants
 import { images } from "@/src/constants"
+
+// components
 import FormField from "@/src/components/FormField"
 import CustomButton from "@/src/components/CustomButton"
+
+// lib
 import { createUser } from "@/src/lib/appwrite"
+
+// contexts
+import { useGlobalContext } from "@/src/context/GlobalProvider"
 
 type FormType = {
 	username: string
@@ -15,6 +23,8 @@ type FormType = {
 }
 
 const SignUp = () => {
+	const { setUser, setIsLoggedIn } = useGlobalContext()
+
 	const [form, setForm] = useState<FormType>({} as FormType)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -33,6 +43,8 @@ const SignUp = () => {
 			})
 
 			// set to global state
+			setUser(result)
+			setIsLoggedIn(true)
 
 			router.replace("/home")
 		} catch (error) {
