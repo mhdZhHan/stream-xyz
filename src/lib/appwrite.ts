@@ -148,3 +148,17 @@ export const searchPosts = async (query: string) => {
 		throw new Error(error as string)
 	}
 }
+
+export const getUserPosts = async (userId: string) => {
+	try {
+		const posts = await databases.listDocuments(
+			databaseId,
+			videoCollectionId,
+			[Query.equal("users", userId)]
+		)
+
+		return posts.documents
+	} catch (error) {
+		throw new Error(error as string)
+	}
+}
