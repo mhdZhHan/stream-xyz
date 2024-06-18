@@ -11,6 +11,9 @@ import VideoCard from "@/src/components/VideoCard"
 // constants
 import { images } from "@/src/constants"
 
+// context
+import { useGlobalContext } from "@/src/context/GlobalProvider"
+
 // lib
 import { getAllPosts, getLatestPosts } from "@/src/lib/appwrite"
 import { useAppwrite } from "@/src/lib/useAppwrite"
@@ -19,6 +22,7 @@ import { useAppwrite } from "@/src/lib/useAppwrite"
 import { VideoType } from "@/src/types"
 
 const Home = () => {
+	const { user } = useGlobalContext()
 	const {
 		data: posts,
 		refetch,
@@ -58,10 +62,10 @@ const Home = () => {
 						<View className="justify-between items-start flex-row mb-6">
 							<View>
 								<Text className="font-pmedium text-sm text-gray-100">
-									Welcome Back
+									Welcome Back,
 								</Text>
 								<Text className="text-2xl font-psemibold text-white">
-									Mohammed
+									{user?.username}
 								</Text>
 							</View>
 
