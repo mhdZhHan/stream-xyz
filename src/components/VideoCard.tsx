@@ -56,7 +56,7 @@ const VideoCard = ({
 
 			{play ? (
 				<Video
-					source={{ uri: video as string }}
+					source={{ uri: video?.uri as string }}
 					className="w-full h-60 rounded-x/ mt-3"
 					resizeMode={ResizeMode.CONTAIN}
 					useNativeControls
@@ -80,7 +80,7 @@ const VideoCard = ({
 					onPress={() => setPlay(true)}
 				>
 					<Image
-						source={{ uri: thumbnail }}
+						source={{ uri: thumbnail?.uri }}
 						className="w-full h-full rounded-xl mt-3"
 						resizeMode="cover"
 					/>

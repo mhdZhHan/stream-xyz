@@ -1,10 +1,11 @@
+import { ImagePickerAsset } from "expo-image-picker"
 import { UserType } from "./user.type"
 
 export type VideoType = {
 	title?: string
-	thumbnail?: string
+	thumbnail?: ImagePickerAsset 
 	prompt?: string
-	video?: string
-	users?: UserType
+	video?: ImagePickerAsset 
+	users?: UserType | null
 	[key: string]: any
 }
