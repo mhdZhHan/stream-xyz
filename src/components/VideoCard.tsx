@@ -13,7 +13,7 @@ type VideoCardProps = {
 }
 
 const VideoCard = ({
-	video: { title, thumbnail, users, prompt, video },
+	video: { title, thumbnail, users, video },
 }: VideoCardProps) => {
 	const [play, setPlay] = useState(false)
 
@@ -56,7 +56,7 @@ const VideoCard = ({
 
 			{play ? (
 				<Video
-					source={{ uri: video?.uri as string }}
+					source={{ uri: String(video) }}
 					className="w-full h-60 rounded-x/ mt-3"
 					resizeMode={ResizeMode.CONTAIN}
 					useNativeControls
@@ -80,7 +80,7 @@ const VideoCard = ({
 					onPress={() => setPlay(true)}
 				>
 					<Image
-						source={{ uri: thumbnail?.uri }}
+						source={{ uri: String(thumbnail) }}
 						className="w-full h-full rounded-xl mt-3"
 						resizeMode="cover"
 					/>
