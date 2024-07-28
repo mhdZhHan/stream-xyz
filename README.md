@@ -4,12 +4,13 @@ A React Native application for sharing AI-generated videos, using Appwrite for u
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
+-   [Introduction](#introduction)
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [Technologies Used](#technologies-used)
+-   [Screenshots](#screenshots)
+-   [Contributing](#contributing)
 
 ## Introduction
 
@@ -17,12 +18,12 @@ This project is a mobile application developed with React Native, aimed at provi
 
 ## Features
 
-- User authentication (sign up, login, logout)
-- Video and thumbnail upload
-- Video listing and searching
-- User profile management
-- Secure storage of media files
-- AI prompt support for video creation
+-   User authentication (sign up, login, logout)
+-   Video and thumbnail upload
+-   Video listing and searching
+-   User profile management
+-   Secure storage of media files
+-   AI prompt support for video creation
 
 ## Installation
 
@@ -30,31 +31,36 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/mhdZhHan/stream-xyz.git
-   cd stream-xyz
-   ```
-3. Install dependencies:
+    ```bash
+    git clone https://github.com/mhdZhHan/stream-xyz.git
+    cd stream-xyz
+    ```
 
-   ```bash
-   yarn install
-   ```
-5. Set up environment variables:
+2. Install dependencies:
+
+    ```bash
+    yarn install
+    ```
+
+3. Set up environment variables:
 
 Create a `.env` file in the root directory and add your Appwrite project credentials:
 
-   ```bash
-   APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
-   APPWRITE_PROJECT_ID=your_project_id
-   APPWRITE_DATABASE_ID=your_database_id
-   APPWRITE_USER_COLLECTION_ID=your_user_collection_id
-   APPWRITE_VIDEO_COLLECTION_ID=your_video_collection_id
-   APPWRITE_BUCKET_ID=your_bucket_id
-   ```
+```bash
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+APPWRITE_PROJECT_ID=your_project_id
+APPWRITE_DATABASE_ID=your_database_id
+APPWRITE_USER_COLLECTION_ID=your_user_collection_id
+APPWRITE_VIDEO_COLLECTION_ID=your_video_collection_id
+APPWRITE_BUCKET_ID=your_bucket_id
+```
+
 4. Run the application:
-  ```bash
-  yarn start
-  ```
+
+```bash
+yarn start
+```
+
 ## Usage
 
 ### Authentication
@@ -75,10 +81,34 @@ Users can manage their profiles, including updating their username and avatar.
 
 ## Technologies Used
 
-- React Native
-- Expo
-- Appwrite
-- TypeScript
+-   React Native
+-   Expo
+-   Appwrite
+-   TypeScript
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Sign up screen
+
+![Sign up screen](screenshots/signup.jpg)
+
+### Home Screen
+
+![Home Screen](screenshots/home.jpg)
+
+### Upload Screen
+
+![Upload Screen](screenshots/upload.jpg)
+
+### Profile Screen
+
+![Profile Screen](screenshots/profile.jpg)
 
 ## Contributing
 
