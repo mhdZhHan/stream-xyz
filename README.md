@@ -1,50 +1,91 @@
-# Welcome to your Expo app 👋
+# Video Sharing App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native application for sharing AI-generated videos, using Appwrite for user authentication and storage.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+
+## Introduction
+
+This project is a mobile application developed with React Native, aimed at providing a platform for users to upload, share, and manage AI-generated videos. The application leverages Appwrite for user authentication, database management, and file storage.
+
+## Features
+
+- User authentication (sign up, login, logout)
+- Video and thumbnail upload
+- Video listing and searching
+- User profile management
+- Secure storage of media files
+- AI prompt support for video creation
+
+## Installation
+
+To get started with the project, follow these steps:
+
+1. Clone the repository:
 
    ```bash
-   npm install
+   git clone https://github.com/mhdZhHan/stream-xyz.git
+   cd stream-xyz
    ```
-
-2. Start the app
+3. Install dependencies:
 
    ```bash
-    npx expo start
+   yarn install
    ```
+5. Set up environment variables:
 
-In the output, you'll find options to open the app in a
+Create a `.env` file in the root directory and add your Appwrite project credentials:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+   APPWRITE_PROJECT_ID=your_project_id
+   APPWRITE_DATABASE_ID=your_database_id
+   APPWRITE_USER_COLLECTION_ID=your_user_collection_id
+   APPWRITE_VIDEO_COLLECTION_ID=your_video_collection_id
+   APPWRITE_BUCKET_ID=your_bucket_id
+   ```
+4. Run the application:
+  ```bash
+  yarn start
+  ```
+## Usage
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Authentication
 
-## Get a fresh project
+Users can sign up and log in using their email and password. The app uses Appwrite's `Account` service to handle user authentication.
 
-When you're ready, run:
+### Uploading Media
 
-```bash
-npm run reset-project
-```
+Users can upload videos and thumbnails using the Expo Document Picker. The media files are stored in Appwrite's storage buckets.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Listing and Searching Videos
 
-## Learn more
+Users can view a list of all uploaded videos and use the search functionality to find specific videos based on their titles.
 
-To learn more about developing your project with Expo, look at the following resources:
+### Profile Management
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Users can manage their profiles, including updating their username and avatar.
 
-## Join the community
+## Technologies Used
 
-Join our community of developers creating universal apps.
+- React Native
+- Expo
+- Appwrite
+- TypeScript
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contributing
+
+Contributions are welcome! If you have any ideas, suggestions, or bug reports, feel free to open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
